@@ -1,0 +1,2311 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>GreenBasket | Organic Products Store</title>
+<meta name="description" content="GreenBasket static HTML demo website. Cart and search run in your browser.">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+
+        /* =========================
+           BASIC RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f7faf5;
+            color: #263526;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           TOP OFFER BAR
+        ========================== */
+
+        .top-bar {
+            background: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            background: white;
+            padding: 16px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #2e7d32;
+            font-size: 28px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #8bc34a;
+        }
+
+
+        /* =========================
+           SEARCH BAR
+        ========================== */
+
+        .search-box {
+            flex: 1;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 13px 50px 13px 18px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            font-size: 15px;
+            background: #f8f8f8;
+        }
+
+        .search-box input:focus {
+            border-color: #2e7d32;
+            background: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 11px;
+            font-size: 18px;
+            color: #2e7d32;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #2e7d32;
+        }
+
+        .login-btn {
+            background: #2e7d32;
+            color: white !important;
+            padding: 11px 18px;
+            border-radius: 7px;
+        }
+
+        .login-btn:hover {
+            background: #1b5e20;
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================== */
+
+        .hero {
+            min-height: 580px;
+            padding: 70px 7%;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(
+                    rgba(20, 60, 25, 0.45),
+                    rgba(20, 60, 25, 0.45)
+                ),
+                url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: white;
+        }
+
+        .hero-small {
+            display: inline-block;
+            background: #8bc34a;
+            padding: 9px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1b5e20;
+        }
+
+        .hero h1 {
+            font-size: 62px;
+            line-height: 1.1;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #c5e1a5;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 580px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #43a047;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2e7d32;
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background: white;
+            color: #2e7d32;
+        }
+
+        .btn-white:hover {
+            background: #e8f5e9;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================== */
+
+        .features {
+            width: 86%;
+            margin: -45px auto 0;
+            position: relative;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .feature h3 {
+            color: #245c28;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .feature p {
+            color: #777;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           COMMON SECTION
+        ========================== */
+
+        .section {
+            padding: 80px 7%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            color: #245c28;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #777;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           CATEGORIES
+        ========================== */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .category {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .category-image {
+            height: 210px;
+            overflow: hidden;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .category:hover img {
+            transform: scale(1.08);
+        }
+
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            color: #2e7d32;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .category-content p {
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================== */
+
+        .products-section {
+            background: #eef6eb;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            height: 230px;
+            overflow: hidden;
+            position: relative;
+            background: #e8f5e9;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .product:hover .product-image img {
+            transform: scale(1.07);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #43a047;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h3 {
+            color: #333;
+            margin-bottom: 7px;
+        }
+
+        .rating {
+            color: #f9a825;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            color: #2e7d32;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 14px;
+        }
+
+        .add-cart {
+            display: block;
+            text-align: center;
+            background: #2e7d32;
+            color: white;
+            padding: 11px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .add-cart:hover {
+            background: #1b5e20;
+        }
+
+
+        /* =========================
+           OFFER BANNER
+        ========================== */
+
+        .offer {
+            margin: 30px 7%;
+            min-height: 300px;
+            border-radius: 20px;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(25,75,30,0.95),
+                    rgba(25,75,30,0.55)
+                ),
+                url("greenbasket.jpg");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .offer-content {
+            max-width: 550px;
+        }
+
+        .offer h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .offer p {
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+
+        /* =========================
+           WHY CHOOSE US
+        ========================== */
+
+        .why-us {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .why-image {
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .why-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .why-content h2 {
+            font-size: 40px;
+            color: #245c28;
+            margin-bottom: 20px;
+        }
+
+        .why-content > p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .check-item {
+            display: flex;
+            gap: 12px;
+            margin: 18px 0;
+            align-items: center;
+        }
+
+        .check {
+            width: 28px;
+            height: 28px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           NEWSLETTER
+        ========================== */
+
+        .newsletter {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 60px 7%;
+        }
+
+        .newsletter h2 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .newsletter p {
+            margin-bottom: 25px;
+        }
+
+        .newsletter-form {
+            max-width: 550px;
+            margin: auto;
+            display: flex;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 13px;
+            font-size: 15px;
+        }
+
+        .newsletter-form button {
+            border: none;
+            background: #1b5e20;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #172b18;
+            color: white;
+            padding: 60px 7% 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            color: #8bc34a;
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .footer-about p {
+            color: #b8c5b8;
+            line-height: 1.7;
+            max-width: 350px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #b8c5b8;
+            margin: 12px 0;
+            transition: 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #8bc34a;
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #355237;
+            padding-top: 22px;
+            text-align: center;
+            color: #9eaa9e;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+
+        @media(max-width: 1100px) {
+
+            .search-box {
+                display: none;
+            }
+
+            .categories,
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media(max-width: 700px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                min-height: 520px;
+                padding: 50px 6%;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .features {
+                width: 90%;
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 55px 6%;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
+            .categories,
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .offer {
+                margin: 20px 6%;
+                padding: 35px 25px;
+            }
+
+            .offer h2 {
+                font-size: 30px;
+            }
+
+            .why-us {
+                grid-template-columns: 1fr;
+            }
+
+            .why-image {
+                height: 300px;
+            }
+
+            .why-content h2 {
+                font-size: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+
+        }
+
+    
+/* =========================================================
+   GREENBASKET PRO DESIGN SYSTEM — VISUAL ENHANCEMENTS ONLY
+   Existing PHP/business logic is untouched.
+   ========================================================= */
+
+:root{
+    --gb-green:#1f7a45;
+    --gb-deep:#0f4d2b;
+    --gb-lime:#a7d86d;
+    --gb-cream:#f5f8f0;
+    --gb-ink:#17351f;
+    --gb-muted:#6d7d70;
+    --gb-glass:rgba(255,255,255,.78);
+    --gb-shadow:0 18px 55px rgba(22,72,39,.12);
+    --gb-shadow-hover:0 28px 70px rgba(22,72,39,.19);
+}
+
+/* Smooth, premium page feel */
+body{
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 10% 15%, rgba(167,216,109,.12), transparent 28%),
+        radial-gradient(circle at 90% 55%, rgba(31,122,69,.08), transparent 30%),
+        #f7faf5;
+}
+
+::selection{
+    background:var(--gb-green);
+    color:#fff;
+}
+
+/* Animated offer strip */
+.top-bar{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(90deg,#0f4d2b,#1f7a45,#2f8d4f,#0f4d2b);
+    background-size:300% 100%;
+    animation:gbGradient 9s ease infinite;
+}
+
+.top-bar::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.22) 45%,transparent 70%);
+    transform:translateX(-120%);
+    animation:gbShine 5s ease-in-out infinite;
+    pointer-events:none;
+}
+
+/* Header glass effect */
+header{
+    background:rgba(255,255,255,.84);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(31,122,69,.08);
+    transition:box-shadow .35s ease, padding .35s ease, background .35s ease;
+}
+
+header:hover{
+    box-shadow:0 10px 35px rgba(0,0,0,.10);
+}
+
+.logo{
+    transition:transform .35s ease;
+}
+
+.logo:hover{
+    transform:translateY(-2px) scale(1.02);
+}
+
+.logo i{
+    animation:gbLeafFloat 3s ease-in-out infinite;
+}
+
+nav a{
+    position:relative;
+}
+
+nav a:not(.login-btn)::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    border-radius:5px;
+    background:var(--gb-green);
+    transform:translateX(-50%);
+    transition:width .3s ease;
+}
+
+nav a:not(.login-btn):hover::after{
+    width:80%;
+}
+
+.login-btn{
+    box-shadow:0 8px 22px rgba(46,125,50,.22);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease !important;
+}
+
+.login-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 13px 28px rgba(46,125,50,.30);
+}
+
+/* Hero — cinematic layered movement */
+.hero{
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
+    background-position:center;
+    animation:gbHeroZoom 14s ease-in-out infinite alternate;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    z-index:-1;
+    background:
+        radial-gradient(circle at 18% 30%, rgba(167,216,109,.22), transparent 24%),
+        radial-gradient(circle at 82% 65%, rgba(255,255,255,.12), transparent 22%);
+    animation:gbOrbMove 11s ease-in-out infinite alternate;
+    pointer-events:none;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:520px;
+    height:520px;
+    right:-180px;
+    top:-210px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:50%;
+    box-shadow:
+        0 0 0 70px rgba(255,255,255,.035),
+        0 0 0 140px rgba(255,255,255,.025);
+    animation:gbRing 16s linear infinite;
+    pointer-events:none;
+}
+
+.hero-content{
+    animation:gbHeroContent 1s cubic-bezier(.2,.75,.2,1) both;
+}
+
+.hero-small{
+    box-shadow:0 12px 30px rgba(139,195,74,.25);
+    animation:gbBadgePulse 3s ease-in-out infinite;
+}
+
+.hero h1{
+    text-shadow:0 10px 35px rgba(0,0,0,.18);
+    letter-spacing:-1.5px;
+}
+
+.hero h1 span{
+    position:relative;
+}
+
+.hero h1 span::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-5px;
+    height:5px;
+    border-radius:20px;
+    background:linear-gradient(90deg,#c5e1a5,transparent);
+    transform-origin:left;
+    animation:gbUnderline 1.4s .7s ease both;
+}
+
+.btn{
+    position:relative;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 10px 25px rgba(0,0,0,.10);
+    transform:translateZ(0);
+}
+
+.btn::before,
+.add-cart::before,
+.newsletter-form button::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:70%;
+    height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+    transform:skewX(-18deg);
+    transition:left .65s ease;
+}
+
+.btn:hover::before,
+.add-cart:hover::before,
+.newsletter-form button:hover::before{
+    left:150%;
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px) scale(1.015);
+    box-shadow:0 18px 35px rgba(46,125,50,.30);
+}
+
+.btn-white:hover{
+    transform:translateY(-4px) scale(1.015);
+    box-shadow:0 18px 35px rgba(255,255,255,.20);
+}
+
+/* Feature glass cards */
+.features{
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.9);
+    box-shadow:var(--gb-shadow);
+}
+
+.feature{
+    border-radius:14px;
+    transition:transform .35s ease, background .35s ease;
+}
+
+.feature:hover{
+    transform:translateY(-6px);
+    background:rgba(232,245,233,.60);
+}
+
+.feature-icon{
+    transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;
+}
+
+.feature:hover .feature-icon{
+    transform:rotate(-6deg) scale(1.12);
+    box-shadow:0 12px 25px rgba(46,125,50,.18);
+}
+
+/* Section headings */
+.section-heading h2{
+    position:relative;
+    display:inline-block;
+}
+
+.section-heading h2::after{
+    content:"";
+    display:block;
+    width:54px;
+    height:4px;
+    margin:12px auto 0;
+    border-radius:10px;
+    background:linear-gradient(90deg,var(--gb-lime),var(--gb-green));
+    transform-origin:center;
+    animation:gbWidth 1.2s ease both;
+}
+
+/* Category cards */
+.category{
+    border:1px solid rgba(31,122,69,.06);
+    box-shadow:var(--gb-shadow);
+    transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
+}
+
+.category:hover{
+    transform:translateY(-12px);
+    box-shadow:var(--gb-shadow-hover);
+}
+
+.category-image{
+    position:relative;
+}
+
+.category-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,transparent 45%,rgba(10,55,27,.18));
+    opacity:0;
+    transition:opacity .4s ease;
+}
+
+.category:hover .category-image::after{
+    opacity:1;
+}
+
+.category:hover img{
+    transform:scale(1.12) rotate(.4deg);
+}
+
+/* Product cards */
+.product{
+    border:1px solid rgba(31,122,69,.06);
+    box-shadow:var(--gb-shadow);
+    transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
+}
+
+.product:hover{
+    transform:translateY(-12px);
+    box-shadow:var(--gb-shadow-hover);
+}
+
+.product-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,rgba(255,255,255,.16),transparent 45%);
+    opacity:0;
+    transition:opacity .35s ease;
+    pointer-events:none;
+}
+
+.product:hover .product-image::after{
+    opacity:1;
+}
+
+.product:hover .product-image img{
+    transform:scale(1.10);
+}
+
+.badge{
+    box-shadow:0 8px 18px rgba(46,125,50,.20);
+    animation:gbBadgeFloat 3.2s ease-in-out infinite;
+}
+
+.add-cart{
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(46,125,50,.18);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+
+.add-cart:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 28px rgba(46,125,50,.28);
+}
+
+/* Offer banner */
+.offer{
+    position:relative;
+    overflow:hidden;
+    box-shadow:var(--gb-shadow);
+}
+
+.offer::before{
+    content:"";
+    position:absolute;
+    width:330px;
+    height:330px;
+    right:-110px;
+    top:-120px;
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:50%;
+    box-shadow:0 0 0 45px rgba(255,255,255,.035),0 0 0 90px rgba(255,255,255,.025);
+    animation:gbRing 13s linear infinite reverse;
+}
+
+.offer-content{
+    position:relative;
+    z-index:1;
+}
+
+/* Why section image */
+.why-image{
+    box-shadow:var(--gb-shadow);
+    position:relative;
+}
+
+.why-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border:1px solid rgba(255,255,255,.4);
+    border-radius:20px;
+    pointer-events:none;
+}
+
+.why-image img{
+    transition:transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.why-image:hover img{
+    transform:scale(1.06);
+}
+
+.check{
+    transition:transform .3s ease, box-shadow .3s ease;
+}
+
+.check-item:hover .check{
+    transform:scale(1.12) rotate(5deg);
+    box-shadow:0 8px 18px rgba(46,125,50,.16);
+}
+
+/* Newsletter */
+.newsletter{
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 15% 30%,rgba(167,216,109,.20),transparent 22%),
+        radial-gradient(circle at 85% 70%,rgba(255,255,255,.10),transparent 22%),
+        #2e7d32;
+}
+
+.newsletter::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:50%;
+    left:-210px;
+    top:-220px;
+    animation:gbRing 18s linear infinite;
+}
+
+.newsletter-form{
+    position:relative;
+    z-index:1;
+    box-shadow:0 18px 45px rgba(0,0,0,.16);
+    transition:transform .3s ease, box-shadow .3s ease;
+}
+
+.newsletter-form:focus-within{
+    transform:translateY(-3px);
+    box-shadow:0 24px 55px rgba(0,0,0,.22);
+}
+
+.newsletter-form button{
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+/* Footer */
+footer{
+    position:relative;
+    overflow:hidden;
+}
+
+footer::before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:2px;
+    background:linear-gradient(90deg,transparent,var(--gb-lime),var(--gb-green),var(--gb-lime),transparent);
+    background-size:200% 100%;
+    animation:gbFooterLine 6s linear infinite;
+}
+
+.footer-column a{
+    position:relative;
+    width:max-content;
+}
+
+.footer-column a:hover{
+    padding-left:8px;
+}
+
+/* Scroll reveal */
+.gb-reveal{
+    opacity:0;
+    transform:translateY(32px);
+    transition:opacity .75s ease, transform .75s cubic-bezier(.2,.75,.2,1);
+}
+
+.gb-reveal.gb-visible{
+    opacity:1;
+    transform:none;
+}
+
+.gb-delay-1{transition-delay:.08s}
+.gb-delay-2{transition-delay:.16s}
+.gb-delay-3{transition-delay:.24s}
+.gb-delay-4{transition-delay:.32s}
+
+/* Floating back-to-top */
+.gb-top{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:48px;
+    height:48px;
+    border:0;
+    border-radius:50%;
+    background:var(--gb-green);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(14px);
+    transition:.3s ease;
+    z-index:1500;
+    box-shadow:0 12px 30px rgba(31,122,69,.28);
+}
+
+.gb-top.gb-show{
+    opacity:1;
+    visibility:visible;
+    transform:none;
+}
+
+.gb-top:hover{
+    transform:translateY(-4px);
+}
+
+/* Keyframes */
+@keyframes gbGradient{
+    0%,100%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+}
+
+@keyframes gbShine{
+    0%,55%{transform:translateX(-120%)}
+    75%,100%{transform:translateX(180%)}
+}
+
+@keyframes gbHeroZoom{
+    from{background-size:100%}
+    to{background-size:108%}
+}
+
+@keyframes gbOrbMove{
+    from{transform:translate3d(-2%,0,0) scale(.95)}
+    to{transform:translate3d(3%,3%,0) scale(1.05)}
+}
+
+@keyframes gbRing{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+@keyframes gbHeroContent{
+    from{opacity:0;transform:translateY(35px)}
+    to{opacity:1;transform:none}
+}
+
+@keyframes gbLeafFloat{
+    0%,100%{transform:rotate(0) translateY(0)}
+    50%{transform:rotate(-8deg) translateY(-3px)}
+}
+
+@keyframes gbBadgePulse{
+    0%,100%{transform:translateY(0);box-shadow:0 12px 30px rgba(139,195,74,.22)}
+    50%{transform:translateY(-4px);box-shadow:0 17px 35px rgba(139,195,74,.32)}
+}
+
+@keyframes gbBadgeFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-3px)}
+}
+
+@keyframes gbUnderline{
+    from{transform:scaleX(0);opacity:0}
+    to{transform:scaleX(1);opacity:1}
+}
+
+@keyframes gbWidth{
+    from{transform:scaleX(0);opacity:0}
+    to{transform:scaleX(1);opacity:1}
+}
+
+@keyframes gbFooterLine{
+    from{background-position:0 0}
+    to{background-position:200% 0}
+}
+
+/* Reduced-motion accessibility */
+@media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+    }
+}
+
+
+/* =========================================================
+   GREENBASKET CINEMATIC TITLE INTRO
+   Presentation-only overlay. PHP/business logic untouched.
+   ========================================================= */
+.gb-cinematic-intro{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(74,125,55,.16), transparent 28%),
+        linear-gradient(135deg,#07150b 0%,#0d2a17 48%,#061108 100%);
+    animation:gbIntroExit 1.15s 4.8s cubic-bezier(.77,0,.18,1) forwards;
+    pointer-events:none;
+}
+
+.gb-cinematic-intro::before{
+    content:"";
+    position:absolute;
+    width:70vw;
+    height:70vw;
+    max-width:900px;
+    max-height:900px;
+    border:1px solid rgba(173,230,117,.16);
+    border-radius:50%;
+    box-shadow:
+        0 0 0 55px rgba(173,230,117,.025),
+        0 0 0 110px rgba(173,230,117,.018);
+    animation:gbIntroOrbit 8s linear infinite;
+}
+
+.gb-cinematic-intro::after{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    background:linear-gradient(
+        105deg,
+        transparent 35%,
+        rgba(255,255,255,.07) 48%,
+        transparent 61%
+    );
+    transform:translateX(-100%);
+    animation:gbIntroLight 2.8s 1.35s ease-out forwards;
+}
+
+.gb-intro-content{
+    position:relative;
+    z-index:3;
+    text-align:center;
+    color:#fff;
+    width:min(90vw,900px);
+}
+
+.gb-intro-kicker{
+    margin:0 0 18px;
+    font-size:12px;
+    letter-spacing:7px;
+    text-transform:uppercase;
+    color:#b9df91;
+    opacity:0;
+    animation:gbKicker 1s .25s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.gb-intro-title{
+    margin:0;
+    font-size:clamp(46px,8vw,96px);
+    line-height:.95;
+    font-weight:800;
+    letter-spacing:-4px;
+    text-shadow:0 12px 45px rgba(0,0,0,.48);
+    opacity:0;
+    animation:gbTitleReveal 1.45s .65s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+.gb-intro-title span{
+    color:#a7d86d;
+    display:inline-block;
+    position:relative;
+}
+
+.gb-intro-title span::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-12px;
+    height:3px;
+    border-radius:20px;
+    background:linear-gradient(90deg,transparent,#a7d86d,#d5efb5,transparent);
+    transform:scaleX(0);
+    transform-origin:center;
+    animation:gbTitleLine 1.1s 1.65s ease forwards;
+}
+
+.gb-intro-subtitle{
+    margin:30px 0 0;
+    font-size:clamp(14px,2vw,19px);
+    letter-spacing:4px;
+    color:rgba(255,255,255,.70);
+    text-transform:uppercase;
+    opacity:0;
+    animation:gbSubtitle 1s 2s ease forwards;
+}
+
+.gb-intro-line{
+    width:0;
+    height:1px;
+    margin:34px auto 0;
+    background:linear-gradient(90deg,transparent,#a7d86d,transparent);
+    animation:gbLine 1.5s 2.3s ease forwards;
+}
+
+.gb-intro-mark{
+    width:58px;
+    height:58px;
+    margin:0 auto 26px;
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(167,216,109,.42);
+    border-radius:50%;
+    color:#a7d86d;
+    font-size:25px;
+    opacity:0;
+    transform:scale(.5) rotate(-20deg);
+    animation:gbMark 1s .1s cubic-bezier(.2,1.4,.4,1) forwards;
+}
+
+.gb-intro-mark::before{
+    content:"";
+    position:absolute;
+    width:82px;
+    height:82px;
+    border:1px solid rgba(167,216,109,.12);
+    border-radius:50%;
+    animation:gbMarkRing 2.5s 1s ease-out infinite;
+}
+
+@keyframes gbKicker{
+    from{opacity:0;transform:translateY(20px);letter-spacing:13px}
+    to{opacity:1;transform:none;letter-spacing:7px}
+}
+
+@keyframes gbMark{
+    0%{opacity:0;transform:scale(.5) rotate(-20deg)}
+    70%{opacity:1;transform:scale(1.12) rotate(3deg)}
+    100%{opacity:1;transform:scale(1) rotate(0)}
+}
+
+@keyframes gbTitleReveal{
+    0%{opacity:0;transform:translateY(55px) scale(1.12);filter:blur(12px);letter-spacing:12px}
+    55%{opacity:1;filter:blur(0)}
+    100%{opacity:1;transform:none;letter-spacing:-4px}
+}
+
+@keyframes gbTitleLine{
+    from{transform:scaleX(0)}
+    to{transform:scaleX(1)}
+}
+
+@keyframes gbSubtitle{
+    from{opacity:0;transform:translateY(15px);letter-spacing:9px}
+    to{opacity:1;transform:none;letter-spacing:4px}
+}
+
+@keyframes gbLine{
+    from{width:0;opacity:0}
+    to{width:min(420px,65vw);opacity:1}
+}
+
+@keyframes gbIntroLight{
+    from{transform:translateX(-100%)}
+    to{transform:translateX(100%)}
+}
+
+@keyframes gbIntroOrbit{
+    from{transform:rotate(0deg) scale(.9)}
+    to{transform:rotate(360deg) scale(.9)}
+}
+
+@keyframes gbMarkRing{
+    0%{transform:scale(.75);opacity:.6}
+    100%{transform:scale(1.55);opacity:0}
+}
+
+@keyframes gbIntroExit{
+    0%{opacity:1;visibility:visible;transform:scale(1)}
+    70%{opacity:1;transform:scale(1.02)}
+    100%{opacity:0;visibility:hidden;transform:scale(1.045)}
+}
+
+@media(prefers-reduced-motion:reduce){
+    .gb-cinematic-intro{
+        animation:gbIntroExit .3s 1.5s forwards;
+    }
+    .gb-cinematic-intro *,
+    .gb-cinematic-intro::before,
+    .gb-cinematic-intro::after{
+        animation:none !important;
+        opacity:1 !important;
+        transform:none !important;
+        filter:none !important;
+    }
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- GreenBasket cinematic opening title card: visual only -->
+<div class="gb-cinematic-intro" aria-hidden="true">
+    <div class="gb-intro-content">
+        <div class="gb-intro-mark">✦</div>
+        <p class="gb-intro-kicker">Welcome to</p>
+        <h1 class="gb-intro-title">Green<span>Basket</span></h1>
+        <p class="gb-intro-subtitle">Fresh • Natural • Everyday</p>
+        <div class="gb-intro-line"></div>
+    </div>
+</div>
+
+
+
+<!-- OFFER BAR -->
+
+<div class="top-bar">
+
+    <i class="fa-solid fa-leaf"></i> FREE DELIVERY ON ORDERS ABOVE ₹499
+    &nbsp; | &nbsp;
+    USE CODE: GREEN20
+
+</div>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        <i class="fa-solid fa-leaf"></i> Green<span>Basket</span>
+    </div>
+
+
+    <!-- WORKING SEARCH -->
+
+    <form class="search-box"
+          method="GET"
+          action="#products">
+
+        <input
+            type="text"
+            name="search"
+            value=""
+            placeholder="Search organic products...">
+
+        <button
+            type="submit"
+            class="search-icon"
+            style="
+                border:none;
+                background:none;
+                cursor:pointer;
+            ">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+    </form>
+
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#cart" id="cartLink"><i class="fa-solid fa-cart-shopping"></i> Cart (<span id="cartCount">0</span>)</a>
+        <a href="#newsletter" class="login-btn">Login Demo</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <span class="hero-small">
+            <i class="fa-solid fa-seedling"></i> 100% ORGANIC & NATURAL
+        </span>
+
+        <h1>
+            Fresh Food.
+            <span>Better Life.</span>
+        </h1>
+
+        <p>
+            Discover fresh organic fruits, vegetables, grains,
+            nuts and natural products delivered directly to your
+            doorstep.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#products"
+               class="btn btn-primary">
+                Shop Now →
+            </a>
+
+            <a href="#categories"
+               class="btn btn-white">
+                Explore Categories
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            <i class="fa-solid fa-truck-fast"></i>
+        </div>
+
+        <div>
+            <h3>Fast Delivery</h3>
+            <p>Fresh products delivered quickly.</p>
+        </div>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            <i class="fa-solid fa-seedling"></i>
+        </div>
+
+        <div>
+            <h3>100% Organic</h3>
+            <p>Natural and chemical-free products.</p>
+        </div>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div>
+            <h3>Secure Payment</h3>
+            <p>Safe and trusted checkout.</p>
+        </div>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            <i class="fa-solid fa-award"></i>
+        </div>
+
+        <div>
+            <h3>Best Quality</h3>
+            <p>Premium quality guaranteed.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="section"
+         id="categories">
+
+    <div class="section-heading">
+
+        <h2>
+            Shop By Category
+        </h2>
+
+        <p>
+            Explore our wide range of healthy organic products.
+        </p>
+
+    </div>
+
+
+    <div class="categories">
+
+
+        <div class="category">
+
+            <div class="category-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80"
+                    alt="Organic vegetables">
+
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Fresh Vegetables
+                </h3>
+
+                <p>
+                    Farm fresh organic vegetables.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=800&q=80"
+                    alt="Organic fruits">
+
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Organic Fruits
+                </h3>
+
+                <p>
+                    Fresh and naturally grown fruits.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
+                    alt="Organic grains">
+
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Organic Grains
+                </h3>
+
+                <p>
+                    Healthy grains for everyday meals.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1508089346258-1e6c7a5f5c7e?auto=format&fit=crop&w=800&q=80"
+                    alt="Organic nuts">
+
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Nuts & Seeds
+                </h3>
+
+                <p>
+                    Nutritious premium nuts and seeds.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="section products-section">
+
+    <div class="section-heading">
+
+        <h2>Featured Products</h2>
+
+        <p>Our customers' favorite organic products.</p>
+
+    </div>
+
+
+    <div class="products" id="productGrid">
+        <div class="product" data-name="Fresh Apples">
+            <div class="product-image"><span class="badge">Fresh</span><img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=700&q=80" alt="Fresh apples"></div>
+            <div class="product-content"><h3>Fresh Apples</h3><div class="rating"><i class="fa-solid fa-star"></i> 4.8</div><div class="price"><span class="current-price">₹120</span></div><button class="add-cart demo-add" type="button" data-name="Fresh Apples" data-price="120">Add to Cart</button></div>
+        </div>
+        <div class="product" data-name="Organic Bananas">
+            <div class="product-image"><span class="badge">Organic</span><img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=700&q=80" alt="Organic bananas"></div>
+            <div class="product-content"><h3>Organic Bananas</h3><div class="rating"><i class="fa-solid fa-star"></i> 4.7</div><div class="price"><span class="current-price">₹60</span></div><button class="add-cart demo-add" type="button" data-name="Organic Bananas" data-price="60">Add to Cart</button></div>
+        </div>
+        <div class="product" data-name="Fresh Broccoli">
+            <div class="product-image"><span class="badge">Popular</span><img src="https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=700&q=80" alt="Fresh broccoli"></div>
+            <div class="product-content"><h3>Fresh Broccoli</h3><div class="rating"><i class="fa-solid fa-star"></i> 4.6</div><div class="price"><span class="current-price">₹90</span></div><button class="add-cart demo-add" type="button" data-name="Fresh Broccoli" data-price="90">Add to Cart</button></div>
+        </div>
+        <div class="product" data-name="Organic Strawberries">
+            <div class="product-image"><span class="badge">Seasonal</span><img src="https://images.unsplash.com/photo- strawberries?auto=format&fit=crop&w=700&q=80" alt="Organic strawberries" onerror="this.src='https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=700&q=80'"></div>
+            <div class="product-content"><h3>Organic Strawberries</h3><div class="rating"><i class="fa-solid fa-star"></i> 4.9</div><div class="price"><span class="current-price">₹180</span></div><button class="add-cart demo-add" type="button" data-name="Organic Strawberries" data-price="180">Add to Cart</button></div>
+        </div>
+    </div>
+
+    <div id="cart" style="max-width:900px;margin:35px auto 0;padding:22px;background:#fff;border-radius:14px;box-shadow:0 5px 20px rgba(0,0,0,.06);">
+        <h3 style="color:#245c28;margin-bottom:12px;">Demo Cart</h3>
+        <p id="cartItems">Your cart is empty.</p>
+        <p id="cartTotal" style="font-weight:bold;margin-top:12px;">Total: ₹0</p>
+        <button type="button" id="clearCart" class="add-cart" style="margin-top:12px;">Clear Cart</button>
+    </div>
+
+</section>
+
+
+<!-- OFFER -->
+
+<section class="offer">
+
+    <div class="offer-content">
+
+        <h2>
+            Get 20% Off Your First Order
+        </h2>
+
+        <p>
+            Start your healthy journey today. Use our welcome
+            discount and enjoy fresh organic products at your
+            doorstep.
+        </p>
+
+        <a href="#products"
+           class="btn btn-white">
+
+            Shop Now →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- WHY CHOOSE US -->
+
+<section class="section">
+
+    <div class="why-us">
+
+        <div class="why-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80"
+                alt="Organic farm">
+
+        </div>
+
+
+        <div class="why-content">
+
+            <h2>
+                Why Choose GreenBasket?
+            </h2>
+
+            <p>
+                We believe healthy food should be fresh, natural
+                and accessible to everyone. That's why we work
+                with trusted farmers and suppliers to bring
+                quality organic products to your home.
+            </p>
+
+
+            <div class="check-item">
+
+                <div class="check">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Direct From Farmers
+                    </strong>
+
+                    <p>
+                        Fresh products sourced from trusted farms.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="check-item">
+
+                <div class="check">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Quality Guaranteed
+                    </strong>
+
+                    <p>
+                        Carefully selected premium products.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="check-item">
+
+                <div class="check">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Eco-Friendly
+                    </strong>
+
+                    <p>
+                        Sustainable packaging and responsible sourcing.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <a href="#products"
+               class="btn btn-primary">
+
+                Explore Products
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+    <h2>
+        Join Our Organic Community <i class="fa-solid fa-seedling"></i>
+    </h2>
+
+    <p>
+        Subscribe and receive special offers, healthy tips
+        and new product updates.
+    </p>
+<form
+        class="newsletter-form"
+        method="POST"
+        action="#">
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            required>
+
+        <button
+            type="submit"
+            id="newsletterSubmit">
+
+            Subscribe
+
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+
+        <div class="footer-about">
+
+            <div class="footer-logo">
+                <i class="fa-solid fa-leaf"></i> GreenBasket
+            </div>
+
+            <p>
+                Your trusted online destination for fresh,
+                healthy and naturally sourced organic products.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#products">
+                Products
+            </a>
+
+            <a href="#cart">
+                Shopping Cart
+            </a>
+
+            <a href="#cart">
+                My Orders
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Account
+            </h3>
+
+            <a href="#newsletter">
+                Login
+            </a>
+
+            <a href="#newsletter">
+                Create Account
+            </a>
+
+            <a href="#cart">
+                Order History
+            </a>
+
+            <a href="#">
+                My Profile
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Contact
+            </h3>
+
+            <a href="#">
+                <i class="fa-solid fa-location-dot"></i> Chennai, India
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-phone"></i> +91 98765 43210
+            </a>
+
+            <a href="mailto:support@greenbasket.com">
+                <i class="fa-solid fa-envelope"></i> support@greenbasket.com
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 GreenBasket Organic Store.
+            All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+/* GreenBasket premium UI effects — presentation only */
+document.addEventListener("DOMContentLoaded", function () {
+    const revealTargets = document.querySelectorAll(
+        ".features, .feature, .category, .product, .offer, .why-image, .why-content, .newsletter, .footer-column"
+    );
+
+    revealTargets.forEach((el, index) => {
+        el.classList.add("gb-reveal");
+        if (index % 4 === 1) el.classList.add("gb-delay-1");
+        if (index % 4 === 2) el.classList.add("gb-delay-2");
+        if (index % 4 === 3) el.classList.add("gb-delay-3");
+    });
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("gb-visible");
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        revealTargets.forEach(el => observer.observe(el));
+    } else {
+        revealTargets.forEach(el => el.classList.add("gb-visible"));
+    }
+
+    const topButton = document.createElement("button");
+    topButton.className = "gb-top";
+    topButton.type = "button";
+    topButton.setAttribute("aria-label", "Back to top");
+    topButton.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    document.body.appendChild(topButton);
+
+    window.addEventListener("scroll", () => {
+        topButton.classList.toggle("gb-show", window.scrollY > 500);
+    }, { passive: true });
+
+    topButton.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchForm = document.querySelector(".search-box");
+    const searchInput = searchForm ? searchForm.querySelector('input[name="search"]') : null;
+    const productCards = Array.from(document.querySelectorAll("#productGrid .product"));
+    if (searchForm && searchInput) {
+        searchForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const term = searchInput.value.trim().toLowerCase();
+            let visible = 0;
+            productCards.forEach(card => {
+                const match = card.dataset.name.toLowerCase().includes(term);
+                card.style.display = match ? "" : "none";
+                if (match) visible++;
+            });
+            const heading = document.querySelector(".products-section .section-heading h2");
+            const sub = document.querySelector(".products-section .section-heading p");
+            if (heading) heading.textContent = term ? "Search Results" : "Featured Products";
+            if (sub) sub.textContent = term ? (visible ? visible + " product(s) found for: " + searchInput.value : "No products found for: " + searchInput.value) : "Our customers' favorite organic products.";
+            document.querySelector("#products").scrollIntoView({behavior:"smooth"});
+        });
+    }
+
+    let cart = [];
+    try { cart = JSON.parse(localStorage.getItem("greenBasketDemoCart") || "[]"); } catch(e) { cart = []; }
+    const saveCart = () => {
+        localStorage.setItem("greenBasketDemoCart", JSON.stringify(cart));
+        const count = cart.reduce((sum, item) => sum + item.qty, 0);
+        const countEl = document.getElementById("cartCount");
+        if (countEl) countEl.textContent = count;
+        const itemsEl = document.getElementById("cartItems");
+        const totalEl = document.getElementById("cartTotal");
+        if (itemsEl) itemsEl.innerHTML = cart.length ? cart.map(item => `<div style="display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #eee">${item.name} × ${item.qty}<span>₹${item.price * item.qty}</span></div>`).join("") : "Your cart is empty.";
+        if (totalEl) totalEl.textContent = "Total: ₹" + cart.reduce((sum,item)=>sum+item.price*item.qty,0);
+    };
+    document.querySelectorAll(".demo-add").forEach(button => {
+        button.addEventListener("click", () => {
+            const name = button.dataset.name;
+            const price = Number(button.dataset.price);
+            const found = cart.find(item => item.name === name);
+            if (found) found.qty += 1; else cart.push({name, price, qty:1});
+            saveCart();
+            button.textContent = "Added ✓";
+            setTimeout(() => button.textContent = "Add to Cart", 1000);
+        });
+    });
+    const clear = document.getElementById("clearCart");
+    if (clear) clear.addEventListener("click", () => { cart = []; saveCart(); });
+    saveCart();
+
+    const newsletter = document.querySelector(".newsletter-form");
+    if (newsletter) newsletter.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const email = newsletter.querySelector('input[type="email"]');
+        if (email && email.checkValidity()) {
+            alert("Thanks for subscribing! (Demo only — no email is stored.)");
+            newsletter.reset();
+        }
+    });
+});
+</script>
+
+</body>
+
+</html>
+
